@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindX Cinema — Đăng nhập</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-secondary sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html"><span class="text-danger">MindX</span> Cinema</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu_chinh" aria-label="Mở menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu_chinh">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#" aria-disabled="true">Tìm kiếm <small>(buổi 7)</small></a></li>
+        <li class="nav-item"><a class="nav-link disabled" href="#" aria-disabled="true">Tin tức <small>(buổi 7)</small></a></li>
+      </ul>
+      <ul class="navbar-nav align-items-lg-center" id="khu_vuc_tai_khoan">
+        <li class="nav-item"><a class="nav-link" href="dang_nhap.html">Đăng nhập</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <form id="form_dang_nhap" class="khung-form" novalidate>
+    <h1 class="h3 mb-1">Đăng nhập</h1>
+    <p class="text-secondary mb-4">Chào mừng em quay lại rạp 🎬</p>
+
+    <div id="thong_bao" class="alert d-none" role="alert"></div>
+
+    <div class="mb-3">
+      <label for="ten_dang_nhap" class="form-label">Tên đăng nhập</label>
+      <input type="text" class="form-control" id="ten_dang_nhap">
+    </div>
+    <div class="mb-4">
+      <label for="mat_khau" class="form-label">Mật khẩu</label>
+      <input type="password" class="form-control" id="mat_khau">
+    </div>
+
+    <button type="submit" class="btn btn-danger w-100">Đăng nhập</button>
+    <p class="text-center text-secondary mt-3 mb-0">Chưa có tài khoản? <a href="dang_ky.html">Đăng ký ngay</a></p>
+  </form>
+</main>
+
+<footer class="py-4 text-center">
+  <div class="container">MindX Cinema · Dự án học tập khóa Web Developer Advanced · Dữ liệu phim từ TMDB</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
