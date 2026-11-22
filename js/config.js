@@ -3,3 +3,4 @@ const TMDB_BASE = "https://api.themoviedb.org/3";
 const TMDB_ANH = "https://image.tmdb.org/t/p/w500";
 const EMBED_BASE = "https://www.2embed.cc/embed/";
 const ANH_PLACEHOLDER = "https://placehold.co/500x750?text=";
+const CHATBASE_ID = "DAN_CHATBOT_ID_VAO_DAY";

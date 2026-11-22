@@ -18,8 +18,8 @@
     <div class="collapse navbar-collapse" id="menu_chinh">
       <ul class="navbar-nav me-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link disabled" href="#" aria-disabled="true">Tìm kiếm <small>(buổi 7)</small></a></li>
-        <li class="nav-item"><a class="nav-link disabled" href="#" aria-disabled="true">Tin tức <small>(buổi 7)</small></a></li>
+        <li class="nav-item"><a class="nav-link" href="tim_kiem.html">Tìm kiếm</a></li>
+        <li class="nav-item"><a class="nav-link" href="tin_tuc.html">Tin tức</a></li>
       </ul>
       <ul class="navbar-nav align-items-lg-center" id="khu_vuc_tai_khoan">
         <li class="nav-item"><a class="nav-link" href="dang_nhap.html">Đăng nhập</a></li>
@@ -38,22 +38,27 @@
     <div class="mb-3">
       <label for="ho_ten" class="form-label">Họ và tên</label>
       <input type="text" class="form-control" id="ho_ten" placeholder="Nguyễn Văn A">
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input type="email" class="form-control" id="email" placeholder="em@example.com">
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="ten_dang_nhap" class="form-label">Tên đăng nhập</label>
       <input type="text" class="form-control" id="ten_dang_nhap" placeholder="vana2011">
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="mat_khau" class="form-label">Mật khẩu</label>
       <input type="password" class="form-control" id="mat_khau">
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-4">
       <label for="xac_nhan_mat_khau" class="form-label">Nhập lại mật khẩu</label>
       <input type="password" class="form-control" id="xac_nhan_mat_khau">
+      <div class="invalid-feedback"></div>
     </div>
 
     <button type="submit" class="btn btn-danger w-100">Đăng ký</button>
@@ -67,6 +72,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/config.js"></script>
+<script src="js/validate.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/chatbot.js"></script>
 </body>
 </html>

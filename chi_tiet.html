@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindX Cinema — Chi tiết phim</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-secondary sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html"><span class="text-danger">MindX</span> Cinema</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu_chinh" aria-label="Mở menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu_chinh">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="tim_kiem.html">Tìm kiếm</a></li>
+        <li class="nav-item"><a class="nav-link" href="tin_tuc.html">Tin tức</a></li>
+      </ul>
+      <ul class="navbar-nav align-items-lg-center" id="khu_vuc_tai_khoan">
+        <li class="nav-item"><a class="nav-link" href="dang_nhap.html">Đăng nhập</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-5">
+  <div id="noi_dung_chi_tiet" class="row g-4">
+    <div class="col-12 text-center py-5">
+      <div class="spinner-border text-danger" role="status"></div>
+      <p class="text-secondary mt-2">Đang tải thông tin phim…</p>
+    </div>
+  </div>
+  <section class="mt-5" id="khu_binh_luan">
+    <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+      <h2 class="h4 mb-0">💬 Bình luận &amp; đánh giá</h2>
+      <span class="text-warning" id="diem_trung_binh">Chưa có đánh giá</span>
+    </div>
+
+    <div id="moi_dang_nhap" class="alert alert-secondary d-none">
+      <a href="dang_nhap.html">Đăng nhập</a> để viết bình luận và chấm sao cho phim này.
+    </div>
+    <form id="form_binh_luan" class="card p-3 mb-4 d-none" novalidate>
+      <label class="form-label mb-1">Em chấm mấy sao?</label>
+      <div class="chon-sao mb-3" id="chon_sao">
+        <button type="button" class="btn-sao" data-sao="1">★</button><button type="button" class="btn-sao" data-sao="2">★</button><button type="button" class="btn-sao" data-sao="3">★</button><button type="button" class="btn-sao" data-sao="4">★</button><button type="button" class="btn-sao" data-sao="5">★</button>
+        <span class="ms-2 small text-secondary" id="nhan_sao">Chưa chọn</span>
+      </div>
+      <input type="hidden" id="so_sao" value="0">
+      <div class="mb-3">
+        <label for="noi_dung_binh_luan" class="form-label">Bình luận</label>
+        <textarea class="form-control" id="noi_dung_binh_luan" rows="3" placeholder="Phim này hay ở chỗ…"></textarea>
+        <div class="invalid-feedback"></div>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <button type="submit" class="btn btn-danger">Gửi bình luận</button>
+        <span class="small text-secondary" id="thong_bao_binh_luan"></span>
+      </div>
+    </form>
+
+    <div id="danh_sach_binh_luan" class="vstack gap-3"></div>
+  </section>
+</main>
+
+<footer class="py-4 text-center">
+  <div class="container">MindX Cinema · Dự án học tập khóa Web Developer Advanced · Dữ liệu phim từ TMDB</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/du_lieu_mau.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/chi_tiet.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/binh_luan.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -60,3 +60,36 @@ footer {
   color: #8b8b99;
   font-size: 0.9rem;
 }
+
+.btn-sao {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #4b4b5a;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: color 0.15s, transform 0.15s;
+}
+
+.btn-sao.sang { color: #ffc107; }
+.btn-sao:hover { transform: scale(1.2); }
+
+@media (max-width: 575.98px) {
+  .hero { padding: 40px 0; }
+  .hero .display-5 { font-size: 1.75rem; }
+  .hero .lead { font-size: 1rem; }
+  .hero .btn-lg { padding: 0.5rem 1rem; font-size: 1rem; }
+  .khung-form { margin: 16px auto; padding: 20px; }
+  .btn-sao { font-size: 2.2rem; padding: 0 6px; }
+  .the-phim .card-body { padding: 6px !important; }
+  .the-phim .card-title { font-size: 0.85rem; }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .hero { padding: 56px 0; }
+}
+
+@media (min-width: 1400px) {
+  .container { max-width: 1320px; }
+}

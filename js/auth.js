@@ -31,12 +31,19 @@ function dang_nhap(ten_dang_nhap, mat_khau) {
     return { thanh_cong: false, thong_bao: "Sai tên đăng nhập hoặc mật khẩu." };
   }
   localStorage.setItem(KHOA_DANG_NHAP, JSON.stringify({ ho_ten: nguoi.ho_ten, ten_dang_nhap: nguoi.ten_dang_nhap }));
-  return { thanh_cong: true, thong_bao: "Xin chào " + nguoi.ho_ten + "! Đang về trang chủ…" };
+  return { thanh_cong: true, thong_bao: "Xin chào " + nguoi.ho_ten + "! Đang chuyển trang…" };
 }
 
 function dang_xuat() {
   localStorage.removeItem(KHOA_DANG_NHAP);
   window.location.href = "index.html";
+}
+
+function yeu_cau_dang_nhap() {
+  if (lay_nguoi_dang_nhap()) return true;
+  const trang_hien_tai = window.location.pathname.split("/").pop() + window.location.search;
+  window.location.href = "dang_nhap.html?thong_bao=can_dang_nhap&quay_lai=" + encodeURIComponent(trang_hien_tai);
+  return false;
 }
 
 function cap_nhat_navbar() {
@@ -69,17 +76,22 @@ function xu_ly_dang_ky(su_kien) {
   const mat_khau = document.getElementById("mat_khau").value;
   const xac_nhan = document.getElementById("xac_nhan_mat_khau").value;
 
-  if (!ho_ten || !ten_dang_nhap || !mat_khau) {
-    hien_thong_bao("warning", "Em điền đủ họ tên, tên đăng nhập và mật khẩu nhé.");
-    return;
-  }
-  if (mat_khau !== xac_nhan) {
-    hien_thong_bao("danger", "Mật khẩu nhập lại chưa khớp.");
+  const hop_le = ap_dung_ket_qua_kiem_tra([
+    ["ho_ten", kiem_tra_rong(ho_ten, "Họ và tên")],
+    ["email", kiem_tra_rong(email, "Email") || kiem_tra_email(email)],
+    ["ten_dang_nhap", kiem_tra_rong(ten_dang_nhap, "Tên đăng nhập") || kiem_tra_ten_dang_nhap(ten_dang_nhap)],
+    ["mat_khau", kiem_tra_rong(mat_khau, "Mật khẩu") || kiem_tra_do_dai(mat_khau, 6, "Mật khẩu")],
+    ["xac_nhan_mat_khau", kiem_tra_khop(mat_khau, xac_nhan, "Mật khẩu nhập lại chưa khớp.")]
+  ]);
+  if (!hop_le) {
+    hien_thong_bao("warning", "Em kiểm tra lại các ô được đánh dấu đỏ nhé.");
     return;
   }
   const ket_qua = dang_ky(ho_ten, email, ten_dang_nhap, mat_khau);
+  if (!ket_qua.thanh_cong) hien_loi("ten_dang_nhap", ket_qua.thong_bao);
   hien_thong_bao(ket_qua.thanh_cong ? "success" : "danger", ket_qua.thong_bao);
   if (ket_qua.thanh_cong) {
+    su_kien.target.reset();
     setTimeout(() => { window.location.href = "dang_nhap.html"; }, 1200);
   }
 }
@@ -88,10 +100,16 @@ function xu_ly_dang_nhap(su_kien) {
   su_kien.preventDefault();
   const ten_dang_nhap = document.getElementById("ten_dang_nhap").value.trim();
   const mat_khau = document.getElementById("mat_khau").value;
+  const hop_le = ap_dung_ket_qua_kiem_tra([
+    ["ten_dang_nhap", kiem_tra_rong(ten_dang_nhap, "Tên đăng nhập")],
+    ["mat_khau", kiem_tra_rong(mat_khau, "Mật khẩu")]
+  ]);
+  if (!hop_le) return;
   const ket_qua = dang_nhap(ten_dang_nhap, mat_khau);
   hien_thong_bao(ket_qua.thanh_cong ? "success" : "danger", ket_qua.thong_bao);
   if (ket_qua.thanh_cong) {
-    setTimeout(() => { window.location.href = "index.html"; }, 1000);
+    const quay_lai = new URLSearchParams(window.location.search).get("quay_lai") || "index.html";
+    setTimeout(() => { window.location.href = quay_lai; }, 1000);
   }
 }
 
@@ -100,5 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const form_dang_ky = document.getElementById("form_dang_ky");
   if (form_dang_ky) form_dang_ky.addEventListener("submit", xu_ly_dang_ky);
   const form_dang_nhap = document.getElementById("form_dang_nhap");
-  if (form_dang_nhap) form_dang_nhap.addEventListener("submit", xu_ly_dang_nhap);
+  if (form_dang_nhap) {
+    form_dang_nhap.addEventListener("submit", xu_ly_dang_nhap);
+    if (new URLSearchParams(window.location.search).get("thong_bao") === "can_dang_nhap") {
+      hien_thong_bao("warning", "Em cần đăng nhập để xem phim nhé. Đăng nhập xong sẽ tự quay lại phim đang chọn.");
+    }
+  }
 });
